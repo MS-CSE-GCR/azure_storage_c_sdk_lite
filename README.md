@@ -19,7 +19,7 @@ This sdk can be used in the embedded equipment for azure storage operation.
 
 3. run the sample code<br>
 
-copy the libazure-storage.so to the /usr/lib  
+    copy the libazure-storage.so to the /usr/lib<br> 
     `cd sample`  
     `make`  
     `./run`  
