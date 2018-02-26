@@ -1,3 +1,4 @@
+
 # Storage_blob_sdk_c_light
 
 This is a light version of azure storage sdk in C language. Only include the blob storage function.  
@@ -22,3 +23,10 @@ copy the libazure-storage.so to the /usr/lib
 cd sample  
 make  
 ./run  
+
+# Reference
+https://github.com/Azure/azure-storage-fuse  
+https://github.com/Azure/azure-storage-cpp  
+https://curl.haxx.se/libcurl/
+
+
