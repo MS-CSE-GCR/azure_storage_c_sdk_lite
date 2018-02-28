@@ -7,25 +7,30 @@ This sdk can be used in the embedded equipment for azure storage operation.
 ## About how to set up
 
 1. clone the project using Git:
+
 ```
-    `git clone https://github.com/MS-CSE-GCR/azure_storage_c_sdk_lite.git`<br>
+    git clone https://github.com/MS-CSE-GCR/azure_storage_c_sdk_lite.git
 ```
 
-2. build the SDK in release type:<br>
-````
-    `cd Storage_blob_sdk_c_light`  
-    `mkdir build`  
-    `cd build`  
-    `cmake .. -DCMAKE_BUILD_TYPE=Release`  
-    `make`  
+2. build the SDK in release type:
+
 ```
-3. run the sample code<br>
+    cd Storage_blob_sdk_c_light
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make
 ```
-    copy the libazure-storage.so to the /usr/lib<br> 
-    `cd sample`  
-    `make`  
-    `./run`  
+
+3. run the sample code
+
 ```
+    copy the libazure-storage.so to the /usr/lib
+    cd sample 
+    make
+    ./run 
+```
+
 ## Reference
 * https://github.com/Azure/azure-storage-fuse  
 * https://github.com/Azure/azure-storage-cpp  
