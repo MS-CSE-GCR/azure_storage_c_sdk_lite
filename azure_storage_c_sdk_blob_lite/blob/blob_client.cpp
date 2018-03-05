@@ -386,7 +386,7 @@ std::future<storage_outcome<get_page_ranges_response>> blob_client::get_page_ran
 std::future<storage_outcome<void>> blob_client::start_copy(const std::string &sourceContainer, const std::string &sourceBlob, const std::string &destContainer, const std::string &destBlob)
 {
     auto http = m_client->get_handle();
-
+std::cout << "start copy2" <<std::endl;
     auto request = std::make_shared<copy_blob_request>(sourceContainer, sourceBlob, destContainer, destBlob);
 
     return async_executor<void>::submit(m_account, request, http, m_context);

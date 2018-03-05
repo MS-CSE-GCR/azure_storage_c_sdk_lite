@@ -1065,6 +1065,7 @@ namespace microsoft_azure {
 
             try
             {
+std::cout << "start copy" <<std::endl;
                 auto task = m_blobClient->start_copy(sourceContainer, sourceBlob, destContainer, destBlob);
                 task.wait();
                 auto result = task.get();

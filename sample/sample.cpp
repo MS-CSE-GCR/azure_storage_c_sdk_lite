@@ -68,12 +68,12 @@ int main()
     
     //-------------upload file to blob-------------------
     std::cout <<"Start upload Blob: " << blobName << std::endl;
-    bc.upload_file_to_blob(appendFileName1, containerName, blobName);
+    bc.upload_file_to_blob(uploadFileName, containerName, blobName);
     std::cout << "Create Blob " << blobName << " done." << std::endl;
 
     //-------------Blob exist---------------------------
     exists = bc.blob_exists(containerName, blobName);
-    std::cout << "exist" << exist << std::endl;
+    std::cout << "exist" << exists << std::endl;
     if(exists) {
         std::cout << "Blob " << blobName << " exist." << std::endl;
     }
@@ -95,13 +95,6 @@ int main()
     bc.download_blob_to_file(containerName, blobName, downloadFileName);
     std::cout << "Download Blob " << blobName << " done." << std::endl;
     assert(errno == 0);
-
-    //------------------copy blob-----------------------
-    bc.start_copy(containerName, blobName, destContainerName, destBlobName);
-    auto property = bc.get_blob_property(destContainerName, destBlobName);
-    std::cout << "Copy status: " << property.copy_status <<std::endl;
-    exists = bc.blob_exists(destContainerName, destBlobName);
-    assert(errno == 0);
     
     //assert(exists);
     /*
@@ -117,10 +110,10 @@ int main()
     //------------------Append blob------------------
     exists = bc.blob_exists(containerName, appendblobName);
     if(exists) {
-        std::cout << "Blob " << appendblobName << "exist." << std::endl;
+        std::cout << "Blob " << appendblobName << " exist." << std::endl;
     }
     else {
-        std::cout << "Blob " << appendblobName << "is not exist." <<std::endl;
+        std::cout << "Blob " << appendblobName << " is not exist." <<std::endl;
     }
     //------------create an append blob--------------
     if(!exists) {
