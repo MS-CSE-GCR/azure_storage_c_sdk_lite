@@ -51,6 +51,7 @@ This sdk can be used in the embedded equipment for azure storage operation.
 ```
     du -sh libazure-storage.so
 ```
+
     run the sample code:
 ```
     cd sample 
