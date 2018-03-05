@@ -265,7 +265,7 @@ std::future<storage_outcome<void>> blob_client::upload_block_from_stream(const s
     auto end = is.tellg();
     is.seekg(cur);
     //check < 2^32
-    std::cout<<"content length: " << end-cur<<std::endl;
+    //std::cout<<"content length: " << end-cur<<std::endl;
     request->set_content_length(static_cast<unsigned int>(end - cur));
 
     http->set_input_stream(storage_istream(is));

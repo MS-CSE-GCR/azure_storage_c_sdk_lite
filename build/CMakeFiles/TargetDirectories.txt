@@ -1,0 +1,3 @@
+/home/zwj/azure_storage_c_sdk_lite/build/CMakeFiles/edit_cache.dir
+/home/zwj/azure_storage_c_sdk_lite/build/CMakeFiles/rebuild_cache.dir
+/home/zwj/azure_storage_c_sdk_lite/build/CMakeFiles/azure-storage.dir

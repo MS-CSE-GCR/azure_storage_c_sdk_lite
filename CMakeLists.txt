@@ -45,7 +45,7 @@ set(AZURE_STORAGE_HEADER
   azure-storage-fuse/azure-storage-cpp-lite/include/http_base.h
   azure-storage-fuse/azure-storage-cpp-lite/include/http/libcurl_http_client.h
 
-  azure_storage_c_sdk_blob_lite/include/blob_client.h
+  azure_storage_c_sdk_blob_lite/include/blob/blob_client.h
   azure-storage-fuse/azure-storage-cpp-lite/include/blob/download_blob_request.h
   azure-storage-fuse/azure-storage-cpp-lite/include/blob/create_block_blob_request.h
   azure-storage-fuse/azure-storage-cpp-lite/include/blob/delete_blob_request.h

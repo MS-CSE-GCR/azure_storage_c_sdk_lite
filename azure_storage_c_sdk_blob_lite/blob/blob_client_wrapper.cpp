@@ -709,7 +709,7 @@ namespace microsoft_azure {
             //for each block size, do one for cycle
             for(long long offset = 0, idx = 0; offset < fileSize; offset += UPLOAD_CHUNK_SIZE, ++idx)
             {
-                std::cout << "idx" << idx << std::endl;
+                //std::cout << "idx" << idx << std::endl;
                 // control the number of submitted jobs.
                 while(task_list.size() > m_concurrency)
                 {

@@ -25,22 +25,21 @@ void checkstatus()
 
 int main()
 {
+    //---------account name& account key-----------------
     std::string account_name = "testzwj";
     //std::string account_key = "vaDY8xu+u0iqSZBcdsNwjAULSFXLaFd7LXT3sV8PsFPI4cla7y1k026KNqve401OuRGTosO5q4z/sm2oodTYRg==";
+    //---------shared access signature-------------------
     std::string m_sas_token = "sv=2017-04-17&sig=ABJdLYXhtXeJu8sxB4jXaPjuPoke11opVP1Q%2FJ3GvwE%3D&spr=https&se=2018-03-06T03%3A14%3A19Z&srt=co&ss=b&sp=racupwdl";
     std::shared_ptr<storage_credential>  cred = std::make_shared<shared_access_signature_credential>(m_sas_token);
-    //std::cout << "hahahha" << std::endl;
     //std::shared_ptr<storage_credential>  cred = std::make_shared<shared_key_credential>(account_name, account_key);
     std::shared_ptr<storage_account> account = std::make_shared<storage_account>(account_name, cred, true);
     auto bC = std::make_shared<blob_client>(account, 10);
-    //auto f1 = bc.list_containers("");
-    //f1.wait();
-    //
-    std::string containerName = "jasontest1";
+    
+    std::string containerName = "containertest";
     std::string blobName = "blob";
-    std::string destContainerName = "jasontest1";
+    std::string destContainerName = "containertest";
     std::string destBlobName = "blob.copy";
-    std::string uploadFileName = "test.txt";
+    std::string uploadFileName = "../../test1.ts";
     std::string downloadFileName = "../../download.ts";
     std::string appendblobName = "appendblob";
     std::string appendFileName1 = "../../test1.ts";
@@ -49,33 +48,31 @@ int main()
 
     bool exists = true;
     blob_client_wrapper bc(bC);
- 
+    std::string << "Test container exist or not: " << std::endl;
     exists = bc.container_exists(containerName);
 
     if(!exists)
     {
+        std::string << "Container " << containerName << "is not exist." << std::endl;
+        std::string << "Become create container: " << containerName << std::endl;
         bc.create_container(containerName);
         assert(errno == 0);
+        std::string << "Create Container " << containerName << " complete." << std::endl;
     }
     
-    assert(errno == 0);
-    exists = bc.blob_exists(containerName, "testsss.txt");
-    assert(errno == 0);
-    assert(!exists);
     std::cout <<"Start upload Blob: " << blobName << std::endl;
-    
     bc.upload_file_to_blob(appendFileName1, containerName, blobName);
+    std::cout << "Blob " << blobName << "has been created." << std::endl;
+
+    std::cout << "Start get blob property" << std::endl;
     auto blobProperty = bc.get_blob_property(containerName, blobName);
     assert(errno == 0);
     std::cout <<"Content type of BLob: " << blobProperty.content_type << std::endl;
-    
-    //std::cout <<"Error upload Blob: " << errno << std::endl;
-    //assert(errno == 0);
 
     exists = bc.blob_exists(containerName, blobName);
     assert(errno == 0);
     assert(exists);
-
+   
     blobProperty = bc.get_blob_property(containerName, blobName);
     assert(errno == 0);
     std::cout <<"Size of BLob: " << blobProperty.size << std::endl;
