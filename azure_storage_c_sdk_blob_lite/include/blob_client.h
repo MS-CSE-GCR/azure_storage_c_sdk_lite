@@ -205,7 +205,7 @@ namespace microsoft_azure { namespace storage {
         /// <param name="blob">The blob name.</param>
         /// <param name="size">The size of the page blob, in bytes.</param>
         /// <returns>A <see cref="std::future" /> object that represents the current operation.</returns>
-        //AZURE_STORAGE_API std::future<storage_outcome<void>> create_page_blob(const std::string &container, const std::string &blob, unsigned long long size);
+        AZURE_STORAGE_API std::future<storage_outcome<void>> create_page_blob(const std::string &container, const std::string &blob, unsigned long long size);
 
         /// <summary>
         /// Intitiates an asynchronous operation  to upload a blob range content from a stream.
@@ -216,7 +216,7 @@ namespace microsoft_azure { namespace storage {
         /// <param name="size">The size of the data, in bytes.</param>
         /// <param name="os">The target stream.</param>
         /// <returns>A <see cref="std::future" /> object that represents the current operation.</returns>
-        //AZURE_STORAGE_API std::future<storage_outcome<void>> put_page_from_stream(const std::string &container, const std::string &blob, unsigned long long offset, unsigned long long size, std::istream &is);
+        AZURE_STORAGE_API std::future<storage_outcome<void>> put_page_from_stream(const std::string &container, const std::string &blob, unsigned long long offset, unsigned long long size, std::istream &is);
 
         /// <summary>
         /// Intitiates an asynchronous operation  to clear pages of a page blob range.
@@ -226,7 +226,7 @@ namespace microsoft_azure { namespace storage {
         /// <param name="offset">The offset at which to begin clearing, in bytes.</param>
         /// <param name="size">The size of the data to be cleared from the blob, in bytes.</param>
         /// <returns>A <see cref="std::future" /> object that represents the current operation.</returns>
-        //AZURE_STORAGE_API std::future<storage_outcome<void>> clear_page(const std::string &container, const std::string &blob, unsigned long long offset, unsigned long long size);
+        AZURE_STORAGE_API std::future<storage_outcome<void>> clear_page(const std::string &container, const std::string &blob, unsigned long long offset, unsigned long long size);
 
         /// <summary>
         /// Intitiates an asynchronous operation  to get the page ranges fro a page blob.
@@ -236,7 +236,7 @@ namespace microsoft_azure { namespace storage {
         /// <param name="offset">The offset at which to get, in bytes.</param>
         /// <param name="size">The size of the data to be get from the blob, in bytes.</param>
         /// <returns>A <see cref="std::future" /> object that represents the current operation.</returns>
-        //AZURE_STORAGE_API std::future<storage_outcome<get_page_ranges_response>> get_page_ranges(const std::string &container, const std::string &blob, unsigned long long offset, unsigned long long size);
+        AZURE_STORAGE_API std::future<storage_outcome<get_page_ranges_response>> get_page_ranges(const std::string &container, const std::string &blob, unsigned long long offset, unsigned long long size);
 
         /// <summary>
         /// Intitiates an asynchronous operation  to copy a blob to another.
@@ -366,7 +366,16 @@ namespace microsoft_azure { namespace storage {
         /// <param name="continuation_token">A continuation token returned by a previous listing operation.</param>
         /// <param name="prefix">The blob name prefix.</param>
         list_blobs_hierarchical_response list_blobs_hierarchical(const std::string &container, const std::string &delimiter, const std::string &continuation_token, const std::string &prefix);
+        
+        /// <summary>
+        /// create an append blob.
+        /// </summary>
+        /// <param name="container"> The container name.</param>
+        /// <param name="blob"> The blob name. </param>
+        void create_append(const std::string &container, const std::string blob);
+        
 
+        void append_blob(const std::string &sourcePath, const std::string &container, const std::string blob);
         /// <summary>
         /// Uploads the contents of a blob from a local file, file size need to be equal or smaller than 64MB.
         /// </summary>
@@ -374,8 +383,10 @@ namespace microsoft_azure { namespace storage {
         /// <param name="container">The container name.</param>
         /// <param name="blob">The blob name.</param>
         /// <param name="metadata">A <see cref="std::vector"> that respresents metadatas.</param>
+   
         void put_blob(const std::string &sourcePath, const std::string &container, const std::string blob, const std::vector<std::pair<std::string, std::string>> &metadata = std::vector<std::pair<std::string, std::string>>());
-
+        
+        void append_block_from_stream(const std::string &container, const std::string blob, std::istream &is);
         /// <summary>
         /// Uploads the contents of a blob from a stream.
         /// </summary>
@@ -385,6 +396,7 @@ namespace microsoft_azure { namespace storage {
         /// <param name="metadata">A <see cref="std::vector"> that respresents metadatas.</param>
         void upload_block_blob_from_stream(const std::string &container, const std::string blob, std::istream &is, const std::vector<std::pair<std::string, std::string>> &metadata = std::vector<std::pair<std::string, std::string>>());
 
+        void append_file_to_blob(const std::string &sourcePath, const std::string &container, const std::string blob, const std::vector<std::pair<std::string, std::string>> &metadata = std::vector<std::pair<std::string, std::string>>(), size_t parallel = 8);
         /// <summary>
         /// Uploads the contents of a blob from a local file.
         /// </summary>

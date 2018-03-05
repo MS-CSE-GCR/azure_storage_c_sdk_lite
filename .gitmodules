@@ -1,0 +1,3 @@
+[submodule "azure-storage-fuse"]
+	path = azure-storage-fuse
+	url = https://github.com/Azure/azure-storage-fuse

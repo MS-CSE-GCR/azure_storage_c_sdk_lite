@@ -16,8 +16,8 @@
 #include "blob/put_block_request.h"
 #include "blob/put_block_list_request.h"
 #include "blob/append_block_request.h"
-//#include "blob/put_page_request.h"
-//#include "blob/get_page_ranges_request.h"
+#include "blob/put_page_request.h"
+#include "blob/get_page_ranges_request.h"
 
 #include "executor.h"
 #include "utility.h"
@@ -265,7 +265,7 @@ std::future<storage_outcome<void>> blob_client::upload_block_from_stream(const s
     auto end = is.tellg();
     is.seekg(cur);
     //check < 2^32
-    //std::cout<<"content length: " << end-cur<<std::endl;
+    std::cout<<"content length: " << end-cur<<std::endl;
     request->set_content_length(static_cast<unsigned int>(end - cur));
 
     http->set_input_stream(storage_istream(is));
@@ -305,12 +305,20 @@ std::future<storage_outcome<void>> blob_client::append_block_from_stream(const s
     is.seekg(cur);
     //check < 2^32
     request->set_content_length(static_cast<unsigned int>(end - cur));
+    //std:: cout << "content_length" << end - cur << std::endl;
+    
+    /*
+    std::string test;
+    is >> test;
+    std::cout << "chouchou: " << test << std::endl;
+    exit(0);
+    */
 
     http->set_input_stream(storage_istream(is));
 
     return async_executor<void>::submit(m_account, request, http, m_context);
 }
-/*
+
 std::future<storage_outcome<void>> blob_client::create_page_blob(const std::string &container, const std::string &blob, unsigned long long size) {
     auto http = m_client->get_handle();
 
@@ -374,7 +382,7 @@ std::future<storage_outcome<get_page_ranges_response>> blob_client::get_page_ran
 
     return async_executor<get_page_ranges_response>::submit(m_account, request, http, m_context);
 }
-*/
+
 std::future<storage_outcome<void>> blob_client::start_copy(const std::string &sourceContainer, const std::string &sourceBlob, const std::string &destContainer, const std::string &destBlob)
 {
     auto http = m_client->get_handle();
