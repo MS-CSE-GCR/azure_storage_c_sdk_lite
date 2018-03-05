@@ -107,7 +107,7 @@ set(AZURE_STORAGE_SOURCE
 
 if(MSVC)
   add_definitions(-DNOMINMAX)
-  include_directories(${CMAKE_SOURCE_DIR}/azure-storage-fuse/azure-storage-cpp-lite/include ${CMAKE_SOURCE_DIR}/azure_storage_c_sdk_blob_lite/include 
+  include_directories(${CMAKE_SOURCE_DIR}/azure_storage_c_sdk_blob_lite/include ${CMAKE_SOURCE_DIR}/azure-storage-fuse/azure-storage-cpp-lite/include  
 ${CMAKE_CURRENT_SOURCE_DIR}/../local/include)
   link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../local/lib)
 else(MSVC)
@@ -117,7 +117,7 @@ else(MSVC)
   add_definitions(-std=c++11)
   set(WARNING "-Wall -Wextra -Werror -pedantic -pedantic-errors")
   set(CMAKE_CXX_FLAGS "${CMAKE_THREAD_LIBS_INIT} ${WARNING} ${CMAKE_CXX_FLAGS}")
-  include_directories(${CMAKE_SOURCE_DIR}/azure-storage-fuse/azure-storage-cpp-lite/include ${CMAKE_SOURCE_DIR}/azure_storage_c_sdk_blob_lite/include ${CURL_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR})
+  include_directories(${CMAKE_SOURCE_DIR}/azure_storage_c_sdk_blob_lite/include ${CMAKE_SOURCE_DIR}/azure-storage-fuse/azure-storage-cpp-lite/include ${CURL_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR})
 endif(MSVC)
 
 set(CMAKE_MACOSX_RPATH ON)
