@@ -40,12 +40,12 @@ int main()
     
     //------------------parameters-----------------------
     std::string containerName = "containertest";
-    std::string blobName = "blob";
+    std::string blobName = "blob.txt";
     std::string destContainerName = "containertest";
-    std::string destBlobName = "blob.copy";
+    std::string destBlobName = "blob.copy.txt";
     std::string uploadFileName = "../test_txt_file/test.txt";
     std::string downloadFileName = "../test_txt_file/download.txt";
-    std::string appendblobName = "appendblob";
+    std::string appendblobName = "appendblob.ts";
     std::string appendFileName1 = "../test_ts_file/test1.ts";
     std::string appendFileName2 = "../test_ts_file/test2.ts";
     std::string appenddownloadFile = "../test_ts_file/appendownload.ts";
@@ -59,7 +59,7 @@ int main()
     //--------------Create Container---------------------
     if(!exists)
     {
-        std::cout << "Container " << containerName << "is not exist." << std::endl;
+        std::cout << "Container " << containerName << " is not exist." << std::endl;
         std::cout << "Become create container: " << containerName << std::endl;
         bc.create_container(containerName);
         assert(errno == 0);
@@ -73,11 +73,12 @@ int main()
 
     //-------------Blob exist---------------------------
     exists = bc.blob_exists(containerName, blobName);
+    std::cout << "exist" << exist << std::endl;
     if(exists) {
-        std::cout << "Blob " << blobName << "exist." << std::endl;
+        std::cout << "Blob " << blobName << " exist." << std::endl;
     }
     else {
-        std::cout << "Blob " << blobName << "is not exist." <<std::endl;
+        std::cout << "Blob " << blobName << " is not exist." <<std::endl;
     }
 
     //-------------get blob property---------------------
@@ -92,7 +93,7 @@ int main()
     
     //--------------download blob to file----------------
     bc.download_blob_to_file(containerName, blobName, downloadFileName);
-    std::cout << "Download Blob " << blobName << "done." << std::endl;
+    std::cout << "Download Blob " << blobName << " done." << std::endl;
     assert(errno == 0);
 
     //------------------copy blob-----------------------
@@ -115,7 +116,7 @@ int main()
 
     //------------------Append blob------------------
     exists = bc.blob_exists(containerName, appendblobName);
-        if(exists) {
+    if(exists) {
         std::cout << "Blob " << appendblobName << "exist." << std::endl;
     }
     else {
