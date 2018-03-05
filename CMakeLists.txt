@@ -107,7 +107,7 @@ set(AZURE_STORAGE_SOURCE
 
 if(MSVC)
   add_definitions(-DNOMINMAX)
-  include_directories(${CMAKE_SOURCE_DIR}/azure-storage-fuse/azure-storage-cpp-lite/include${CMAKE_SOURCE_DIR}/azure_storage_c_sdk_blob_lite/include 
+  include_directories(${CMAKE_SOURCE_DIR}/azure-storage-fuse/azure-storage-cpp-lite/include ${CMAKE_SOURCE_DIR}/azure_storage_c_sdk_blob_lite/include 
 ${CMAKE_CURRENT_SOURCE_DIR}/../local/include)
   link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../local/lib)
 else(MSVC)
