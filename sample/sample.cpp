@@ -43,12 +43,12 @@ int main()
     std::string blobName = "blob";
     std::string destContainerName = "containertest";
     std::string destBlobName = "blob.copy";
-    std::string uploadFileName = "../../test1.txt";
-    std::string downloadFileName = "../../download.txt";
+    std::string uploadFileName = "../test_txt_file/test1.txt";
+    std::string downloadFileName = "../test_txt_file/download.txt";
     std::string appendblobName = "appendblob";
-    std::string appendFileName1 = "../../test1.ts";
-    std::string appendFileName2 = "../../test2.ts";
-    std::string appenddownloadFile = "../../appendownload.ts";
+    std::string appendFileName1 = "../test_ts_file/test1.ts";
+    std::string appendFileName2 = "../test_ts_file/test2.ts";
+    std::string appenddownloadFile = "../test_ts_file/appendownload.ts";
     
     //--------------Container exist----------------------
     bool exists = true;
