@@ -43,7 +43,7 @@ int main()
     std::string blobName = "blob";
     std::string destContainerName = "containertest";
     std::string destBlobName = "blob.copy";
-    std::string uploadFileName = "../test_txt_file/test1.txt";
+    std::string uploadFileName = "../test_txt_file/test.txt";
     std::string downloadFileName = "../test_txt_file/download.txt";
     std::string appendblobName = "appendblob";
     std::string appendFileName1 = "../test_ts_file/test1.ts";
@@ -53,17 +53,17 @@ int main()
     //--------------Container exist----------------------
     bool exists = true;
     blob_client_wrapper bc(bC);
-    std::string << "Test container exist or not: " << std::endl;
+    std::cout << "Test container exist or not: " << std::endl;
     exists = bc.container_exists(containerName);
     
     //--------------Create Container---------------------
     if(!exists)
     {
-        std::string << "Container " << containerName << "is not exist." << std::endl;
-        std::string << "Become create container: " << containerName << std::endl;
+        std::cout << "Container " << containerName << "is not exist." << std::endl;
+        std::cout << "Become create container: " << containerName << std::endl;
         bc.create_container(containerName);
         assert(errno == 0);
-        std::string << "Create Container " << containerName << " done." << std::endl;
+        std::cout << "Create Container " << containerName << " done." << std::endl;
     }
     
     //-------------upload file to blob-------------------
@@ -77,7 +77,7 @@ int main()
         std::cout << "Blob " << blobName << "exist." << std::endl;
     }
     else {
-        std::cout << "Blob " << blobName << "is not exist." <<std:endl;
+        std::cout << "Blob " << blobName << "is not exist." <<std::endl;
     }
 
     //-------------get blob property---------------------
@@ -89,7 +89,6 @@ int main()
     
     //-------------list blobs---------------------------
     auto blobs = bc.list_blobs_hierarchical(containerName, "/", "", "");
-    std::cout <<"Size of BLobs: " << blobs.size() << std::endl;
     
     //--------------download blob to file----------------
     bc.download_blob_to_file(containerName, blobName, downloadFileName);
@@ -120,7 +119,7 @@ int main()
         std::cout << "Blob " << appendblobName << "exist." << std::endl;
     }
     else {
-        std::cout << "Blob " << appendblobName << "is not exist." <<std:endl;
+        std::cout << "Blob " << appendblobName << "is not exist." <<std::endl;
     }
     //------------create an append blob--------------
     if(!exists) {
