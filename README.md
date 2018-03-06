@@ -48,6 +48,8 @@ This sdk can be used in the embedded equipment for azure storage operation.
 
 You will have two ways to do the credentials. One of it is "[shared credentials](https://docs.microsoft.com/en-us/rest/api/storageservices/Authentication-for-the-Azure-Storage-Services)" which will need the "account name" and the "account key", the other way is "[shared access signature](https://docs.microsoft.com/en-us/azure/storage/common/storage-dotnet-shared-access-signature-part-1)" which will need a sas token to do the credential. You need to input the information in the sample.cpp before run it.
 
+Before run the sample code, you need to put test1.ts and test2.ts file into the file "test_ts_file" to test the append function.
+
 ```
     //Copy the libazure-storage.so to the /usr/lib  
     sudo cp libazure-storage.so /usr/lib  
