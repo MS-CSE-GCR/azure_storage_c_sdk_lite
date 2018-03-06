@@ -27,10 +27,10 @@ int main()
 {
     //---------account name& account key-----------------
     std::string account_name = "testzwj";
-    //std::string account_key = "vaDY8xu+u0iqSZBcdsNwjAULSFXLaFd7LXT3sV8PsFPI4cla7y1k026KNqve401OuRGTosO5q4z/sm2oodTYRg==";
+    //std::string account_key = "";
 
     //---------shared access signature-------------------
-    std::string m_sas_token = "sv=2017-04-17&sig=ABJdLYXhtXeJu8sxB4jXaPjuPoke11opVP1Q%2FJ3GvwE%3D&spr=https&se=2018-03-06T03%3A14%3A19Z&srt=co&ss=b&sp=racupwdl";
+    std::string m_sas_token = "";
 
     //----------------become credential------------------
     std::shared_ptr<storage_credential>  cred = std::make_shared<shared_access_signature_credential>(m_sas_token);
